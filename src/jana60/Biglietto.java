@@ -5,53 +5,53 @@ import java.text.DecimalFormat;
 
 public class Biglietto {
 	
-		// Attributi
+	// Attributi
 	
-		private double prezzoKm = 0.21, scontoUnder18 = 0.2, scontoOver65 = 0.4;
-		private int etaPasseggero;
-		private double km;
+	private int etaPass;
+	private float km;	
+	private float przkm = 0.21f;
+	private float scontoU18 = 0.2f;
+	private float scontoO65 = 0.4f;
+	
+	
+	//Costruttori
+	
+	public Biglietto(int etaPassC, float kmC) {
+		etaPass = etaPassC;
+		km = kmC;
+	}
+	
+	// get e set
 
-		DecimalFormat df = new DecimalFormat("#0.00€");
+	public void setkm(float kmX) {
+		km = kmX;
+	}
 
-		// Costruttori
+	public void setetaPass(int etaPassX) {
+		etaPass = etaPassX;
+	}
+	
+	//metodi
+	// metodo per il calcolo del prezzo del biglietto in base all'età	
+	
+	public double calcPrezzoTicket() {		
 		
-		public Biglietto(int etaPasseggero, double km) {
-			super();
-			this.km = km;
-			this.etaPasseggero = etaPasseggero;
-		}
-
-		// Metodi
-
-		public double calcoloPrezzo() {
-			double prezzo = 0.0;
-			prezzo = km * prezzoKm;
-			if (etaPasseggero > 65) {
-				return prezzo - (prezzo * scontoOver65);
-			} else if (etaPasseggero < 18) {
-				return prezzo - (prezzo * scontoUnder18);
-			} else {
-				return prezzo;
-			}
-		}
+		double prezzoTicket = km * przkm;
 		
-		// Formattazione prezzo a due cifre decimali
-		public String formattaPrezzo()
-		{
-			return df.format((calcoloPrezzo()));
-		}
-
-		public String ScontiPasseggeri() {
-			String MessaggioSconto = "Ciao, ";
-			if (etaPasseggero > 65) {
-				MessaggioSconto += "hai uno sconto sul prezzo finale del 40%";
-			} else if (etaPasseggero < 18) {
-				MessaggioSconto += "hai uno sconto sul prezzo finale del 20%";
-			} else {
-				MessaggioSconto += "haghi il costo del biglietto per intero";
-			}
-			return MessaggioSconto += "il costo finale del biglietto è di" + " " + formattaPrezzo();
-
-		}
-
+		if (etaPass < 18) {
+			prezzoTicket -= (prezzoTicket * scontoU18);
+		} else if (etaPass >= 65) {
+			prezzoTicket -= (prezzoTicket * scontoO65);
+		}		
+		return prezzoTicket;
+	}
+	
+	//metodo per formattare il prezzo a due cifre decimali
+	DecimalFormat df = new DecimalFormat("0.00€");
+	
+	public String formattaPrezzo() {		
+		 return df.format(calcPrezzoTicket());		
+	}
+	
+	
 }
