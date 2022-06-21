@@ -18,6 +18,7 @@ public class Bonus {
 			Scanner scan = new Scanner(System.in);
 			
 			
+			
 				do {
 					System.out.println(
 							"Benvenuta/o, scrivi 1 se vuoi acquistare un biglietto o 2 per terminare il programma");

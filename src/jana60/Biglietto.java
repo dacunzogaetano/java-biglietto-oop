@@ -9,7 +9,7 @@ public class Biglietto {
 	
 	private int etaPass;
 	private float km;	
-	private float przkm = 0.21f;
+	private float prezzokm = 0.21f;
 	private float scontoU18 = 0.2f;
 	private float scontoO65 = 0.4f;
 	
@@ -31,12 +31,14 @@ public class Biglietto {
 		etaPass = etaPassX;
 	}
 	
+	
 	//metodi
+	
 	// metodo per il calcolo del prezzo del biglietto in base all'età	
 	
 	public double calcPrezzoTicket() {		
 		
-		double prezzoTicket = km * przkm;
+		double prezzoTicket = km * prezzokm;
 		
 		if (etaPass < 18) {
 			prezzoTicket -= (prezzoTicket * scontoU18);

@@ -7,17 +7,20 @@ public class Biglietteria {
 	public static void main(String[] args) {
 
 		//Creazione Ticket che eredita gli attributi della classe Biglietto
-		Biglietto Ticket = new Biglietto(0,0);
+		
 		
 		Scanner scan = new Scanner(System.in);
 		
 		//Chiedo all'utente di inserire l'età
 		System.out.print("Inserisci la tua etá: ");
-		Ticket.setetaPass(Integer.parseInt(scan.nextLine()));
+		
+		int eta = (Integer.parseInt(scan.nextLine()));
 		
 		//Chiedo all'utente i chilometri
 		System.out.print("Inserisci il numero di chilometri da percorrere: ");
-		Ticket.setkm(Float.parseFloat(scan.nextLine()));
+		float km = (Float.parseFloat(scan.nextLine()));
+		
+		Biglietto Ticket = new Biglietto(eta, km);
 		
 		
 		//Frase finale che eredita i metodi della classe biglietto
